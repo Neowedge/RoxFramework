@@ -1,0 +1,10 @@
+.settings
+.buildpath
+.project
+_COPY
+_WIP
+ok.txt
+logs
+/controller/common/PHPMailer/docs
+/controller/common/PHPMailer/examples
+/controller/common/PHPMailer/test

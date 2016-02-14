@@ -1,0 +1,9 @@
+<IfModule mod_rewrite.c>
+    Options +FollowSymLinks -MultiViews
+	RewriteEngine On
+	RewriteBase /
+
+	# remove /public/ from URL
+	RewriteCond %{REQUEST_URI} !/public [NC]
+	RewriteRule ^(.*)/?$ public/$1
+</IfModule>

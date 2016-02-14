@@ -1,0 +1,12 @@
+<div class="control-group<?php if (isset($controlClass)) { echo ' '.$controlClass; } ?>">
+								<label class="control-label" for="<?php echo $id; ?>"><?php echo $title; ?></label>
+								<div class="controls">
+									<select id="<?php echo $id; ?>" name="<?php echo $name; ?>" data-rel="chosen">
+										<?php foreach ($valuesList as $optValue=>$optDisplay) { ?>
+										<option value="<?php echo $optValue; ?>"<?php if ($optValue==$value) { ?> selected<?php } ?>><?php echo $optDisplay; ?></option>
+										<?php } ?>
+								    </select>
+								    <?php if (isset($description)) { ?><span class="help-inline"><?php echo $description; ?></span><?php } ?>
+								    <?php if (isset($help)) { ?><span class="help-inline"><?php echo $help; ?></span><?php } ?>
+								</div>
+							  </div>

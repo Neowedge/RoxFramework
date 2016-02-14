@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cms xmlns="">
+    <layouts>
+        <layout name="layoutIndex" class="RoxOffice\Controllers\Rox_Layout">
+            <param name="filename" value="/layout.phtml" />
+        </layout>
+        <layout name="layoutHome" class="RoxOffice\Controllers\Rox_Layout">
+            <param name="filename" value="/home.phtml" />
+        </layout>
+        <layout name="layoutEntityMaster" class="RoxOffice\Controllers\Rox_Layout_EntityMaster">
+            <param name="filename" value="/entities/entity_master.phtml" />
+        </layout>
+        <layout name="layoutEntityDetail" class="RoxOffice\Controllers\Rox_Layout_EntityDetail">
+            <param name="filename" value="/entities/entity_detail.phtml" />
+        </layout>
+        <layout name="layoutFieldCell" class="RoxOffice\Controllers\Rox_Layout_Field_Td">
+            <param name="filename" value="/fields/field_td.phtml" />
+        </layout>
+        <layout name="layoutFieldCellCheckbox" class="RoxOffice\Controllers\Rox_Layout_Field_Td_Tick">
+            <param name="filename" value="/fields/field_td_tick.phtml" />
+        </layout>
+        <layout name="layoutFieldTextbox" class="RoxOffice\Controllers\Rox_Layout_Field_Textbox">
+            <param name="filename" value="/fields/field_textbox.phtml" />
+        </layout>
+        <layout name="layoutFieldTextarea" class="RoxOffice\Controllers\Rox_Layout_Field_Textarea">
+            <param name="filename" value="/fields/field_textarea.phtml" />
+        </layout>
+        <layout name="layoutFieldDate" class="RoxOffice\Controllers\Rox_Layout_Field_Date">
+            <param name="filename" value="/fields/field_date.phtml" />
+        </layout>
+        <layout name="layoutFieldSelect" class="RoxOffice\Controllers\Rox_Layout_Field_Select">
+            <param name="filename" value="/fields/field_select.phtml" />
+        </layout>
+        <layout name="layoutFieldCheckbox" class="RoxOffice\Controllers\Rox_Layout_Field_Checkbox">
+            <param name="filename" value="/fields/field_checkbox.phtml" />
+        </layout>
+    </layouts>
+
+    <validators>
+        <validator name="isDate" class="RoxOffice\Controllers\Rox_Validator" function="isDate" error="Este campo no tiene un formato de fecha válido (dd/mm/yyyyy)" />
+    </validators>
+
+    <converters>
+        <converter name="convertDate" class="RoxOffice\Controllers\Rox_Converter" function-convert="convert_DbDate_To_Date" function-unconvert="convert_Date_To_DbDate" />
+    </converters>
+
+    <templates>
+        <template name="Charisma" class="RoxOffice\Controllers\Rox_Template">
+            <layoutRef name="index" ref="layoutIndex" />
+            <layoutRef name="home" ref="layoutHome" />
+        </template>
+    </templates>
+
+    <entities>
+        <-- Agrega las entidades que se manejarán en el CMF en etiquetas "entity" -!>
+    </entities>
+
+    <offices>
+		<-- Crea distintos backoffice para cada rol que manejará la aplicación con la etiqueta "office" -!>
+	
+        <office name="admin" class="RoxOffice\Controllers\Rox_Office">
+            <include dir="APP_DIR">/controller/RoxOffice/classes/Rox_Validator.php</include>
+            <include dir="APP_DIR">/controller/RoxOffice/classes/Rox_Converter.php</include>
+
+            <include dir="APP_DIR">/controller/RoxOffice/classes/Rox_Layout_EntityDetail.php</include>
+            <include dir="APP_DIR">/controller/RoxOffice/classes/Rox_Layout_EntityMaster.php</include>
+            <include dir="APP_DIR">/controller/RoxOffice/classes/Rox_Layout_Field_Td.php</include>
+            <include dir="APP_DIR">/controller/RoxOffice/classes/Rox_Layout_Field_Td_Tick.php</include>
+            <include dir="APP_DIR">/controller/RoxOffice/classes/Rox_Layout_Field_Textbox.php</include>
+            <include dir="APP_DIR">/controller/RoxOffice/classes/Rox_Layout_Field_Checkbox.php</include>
+            <include dir="APP_DIR">/controller/RoxOffice/classes/Rox_Layout_Field_Textarea.php</include>
+            <include dir="APP_DIR">/controller/RoxOffice/classes/Rox_Layout_Field_Date.php</include>
+            <include dir="APP_DIR">/controller/RoxOffice/classes/Rox_Layout_Field_Select.php</include>
+			
+			
+            <templateRef ref="Charisma" />
+			
+			<-- Crea grupos de entidades en este backoffice con la etiqueta "entityGroup" -!>
+
+        </office>
+    </offices>
+</cms>

@@ -1,0 +1,10 @@
+<div class="control-group<?php if (isset($controlClass)) { echo ' '.$controlClass; } ?>">
+								<label class="control-label" for="<?php echo $id; ?>"><?php echo $title; ?></label>
+								<div class="controls">
+									<?php if (isset ($prepend)) { ?><span class="add-on"><?echo $prepend; ?></span><?php } ?>
+								  	<input class="input-xlarge focused" id="<?php echo $id; ?>" name="<?php echo $name; ?>" type="text" value="<?php echo $value; ?>">
+								  	<?php if (isset ($append)) { ?><span class="add-on"><?echo $append; ?></span><?php } ?>
+								  	<?php if (isset($description)) { ?><span class="help-inline"><?php echo $description; ?></span><?php } ?>
+								  	<?php if (isset($help)) { ?><span class="help-inline"><?php echo $help; ?></span><?php } ?>
+								</div>
+							  </div>

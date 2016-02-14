@@ -1,0 +1,67 @@
+<div class="row-fluid sortable">
+				<div class="box span12">
+					<div class="box-header well" data-original-title>
+						<h2><i class="icon-edit"></i> <?php echo $title; ?></h2>
+						<!--<div class="box-icon">
+							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
+							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
+						</div>-->
+					</div>
+					<div class="box-content">
+						<?php if (isset($message)) { ?>
+						<div class="alert alert-<?php echo $message['type']; ?>">
+							<button type="button" class="close" data-dismiss="alert">×</button>
+							<?php echo $message['text']; ?>
+						</div>
+						<?php } ?>
+						<form class="form-horizontal" action="<?php $formAction; ?>" method="POST">
+							<fieldset>
+							  <?php foreach ($fields as $field) {
+									if ($field->layoutFieldDetail !== null) {
+										$fieldName = $field->name;
+										$params = array(
+											'id'			=> $fieldName.'-new',
+											'name'			=> $fieldName,
+											'title' 		=> $field->title,
+											'field' 		=> $fieldName,
+											'valuesList'	=> $field->getValuesList());
+
+										if (isset($data)) {
+											$entityId = $data->$PKField;
+											if (!empty($entityId) && $entityId) {
+												$params['id'] = $fieldName.'-'.$entityId;
+											}
+
+											if (isset($validates) && isset($validates[$fieldName])) {
+												$valid = $validates[$fieldName] === true;
+
+												if ($valid) {
+													$params['controlClass'] = 'success';
+												} else {
+													$params['controlClass'] = 'error';
+													$params['help'] = $validates[$fieldName];
+												}
+											} else {
+												$valid = true;
+											}
+
+											$params['value'] = $valid ? $field->getValue($data->$fieldName) : $data->$fieldName;
+										} else {
+											$params['value'] = '';
+										}
+
+										$field->layoutFieldDetail->view($controller, $templateName, $params);
+									}
+							  } ?>
+							  <div class="form-actions">
+								<button type="submit" class="btn btn-primary">Guardar</button>
+								<button class="btn">Cancelar</button>
+							  </div>
+							</fieldset>
+						  </form>
+					
+					</div>
+				</div><!--/span-->
+			
+			</div><!--/row-->

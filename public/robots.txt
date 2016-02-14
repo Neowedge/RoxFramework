@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /css
+Disallow: /fonts
+Disallow: /img/css
+Disallow: /js
+Disallow: /php
+Disallow: /inc
+Disallow: /icons

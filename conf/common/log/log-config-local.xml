@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="http://logging.apache.org/log4php/">
+    <appender name="DebugLog" class="LoggerAppenderDailyFile">
+        <param name="file" value="../logs/debug.%s.log" />
+        <param name="datePattern" value="Ymd" />
+        <layout class="LoggerLayoutPattern">
+            <param name="ConversionPattern" value="%d{Y-m-d H:i:s} [%p] %c: %m (at %F line %L)%n" />
+        </layout>
+        <filter class="LoggerFilterLevelRange">
+            <param name="LevelMin" value="trace" />
+            <param name="LevelMax" value="debug" />
+        </filter>
+        <filter class="LoggerFilterDenyAll" />
+    </appender>
+    <appender name="InfoLog" class="LoggerAppenderDailyFile">
+        <param name="file" value="../logs/info.%s.log" />
+        <param name="datePattern" value="Ymd" />
+        <layout class="LoggerLayoutPattern">
+            <param name="ConversionPattern" value="%d{Y-m-d H:i:s} [%p] %c: %m (at %F line %L)%n" />
+        </layout>
+        <filter class="LoggerFilterLevelRange">
+            <param name="LevelMin" value="info" />
+            <param name="LevelMax" value="info" />
+        </filter>
+        <filter class="LoggerFilterDenyAll" />
+    </appender>
+     <appender name="WarnLog" class="LoggerAppenderDailyFile">
+        <param name="file" value="../logs/warning.%s.log" />
+        <param name="datePattern" value="Ymd" />
+        <layout class="LoggerLayoutPattern">
+            <param name="ConversionPattern" value="%d{Y-m-d H:i:s} [%p] %c: %m (at %F line %L)%n" />
+        </layout>
+        <filter class="LoggerFilterLevelRange">
+            <param name="LevelMin" value="warn" />
+            <param name="LevelMax" value="warn" />
+        </filter>
+        <filter class="LoggerFilterDenyAll" />
+    </appender>
+    <appender name="ErrorLog" class="LoggerAppenderDailyFile">
+        <param name="file" value="../logs/errors.%s.log" />
+        <param name="datePattern" value="Ymd" />
+        <layout class="LoggerLayoutPattern">
+            <param name="ConversionPattern" value="%d{Y-m-d H:i:s} [%p] %c: %m (at %F line %L)%n" />
+        </layout>
+        <filter class="LoggerFilterLevelRange">
+            <param name="LevelMin" value="error" />
+            <param name="LevelMax" value="fatal" />
+        </filter>
+        <filter class="LoggerFilterDenyAll" />
+    </appender>
+    <logger name="DefaultLogger" additivity="false">
+        <level value="DEBUG" />
+        <appender_ref ref="DebugLog" />
+        <appender_ref ref="InfoLog" />
+        <appender_ref ref="WarnLog" />
+        <appender_ref ref="ErrorLog" />
+    </logger>
+</configuration>

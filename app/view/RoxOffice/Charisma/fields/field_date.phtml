@@ -1,0 +1,8 @@
+<div class="control-group<?php if (isset($controlClass)) { echo ' '.$controlClass; } ?>">
+							  <label class="control-label" for="<?php echo $id; ?>"><?php echo $title; ?></label>
+							  <div class="controls">
+								<input type="text" class="input-xlarge datepicker" id="<?php echo $id; ?>" name="<?php echo $name; ?>" value="<?php echo $value; ?>">
+								<?php if (isset($description)) { ?><span class="help-inline"><?php echo $description; ?></span><?php } ?>
+								<?php if (isset($help)) { ?><span class="help-inline"><?php echo $help; ?></span><?php } ?>
+							  </div>
+							</div>

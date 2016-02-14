@@ -1,0 +1,8 @@
+<div class="control-group<?php if (isset($controlClass)) { echo ' '.$controlClass; } ?>">
+							  <label class="control-label" for="<?php echo $id; ?>"><?php echo $title; ?></label>
+							  <div class="controls">
+								<textarea class="autogrow" id="<?php echo $id; ?>" name="<?php echo $name; ?>" rows="3"><?php echo $value; ?></textarea>
+								<?php if (isset($description)) { ?><span class="help-inline"><?php echo $description; ?></span><?php } ?>
+								<?php if (isset($help)) { ?><span class="help-inline"><?php echo $help; ?></span><?php } ?>
+							  </div>
+							</div>
